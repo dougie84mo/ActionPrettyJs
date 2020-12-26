@@ -57,17 +57,19 @@ class AP {
 			this.oldClass = $i.attr('class');
 		}
 	}
+	
 	disable(){
-        this.$lk.addClass(CN.DIS).attr(CN.DIS, true);
-        //return this;
-    }
-    enable(){
-        this.$lk.removeClass(CN.DIS).attr(CN.DIS, false);
-        //return this;
-    }
+        	this.$lk.addClass(CN.DIS).attr(CN.DIS, true);
+        	//return this;
+    	}
+	
+    	enable(){
+        	this.$lk.removeClass(CN.DIS).attr(CN.DIS, false);
+        	//return this;
+    	}
 
-    addSpin(){
-    	//save class or create font-awesome save class for adding later
+    	addSpin(){
+    		//save class or create font-awesome save class for adding later
 		this.$lk.find('i')
 			.removeClass()
 			.addClass(FAWSPIN.SPR)
@@ -84,15 +86,15 @@ class AP {
 	}
 
 
-    removeRow(){
-    	this.removeClosest('tr')
-    }
+    	removeRow(){
+    		this.removeClosest('tr')
+    	}
 
-    removePanel(){
+    	removePanel(){
 		this.removeClosest('.panel');
-    }
+    	}
 
-    flipHiddenRow(prev = false){
+    	flipHiddenRow(prev = false){
 		let $p = $(this.$lk.closest('tr'));
 		if (prev === true) {
             $p = $($p.prev());
@@ -103,31 +105,31 @@ class AP {
 		}
 		console.log($p);
 		AP.switchHiddenButtons($p);
-        console.log('switched');
+        	console.log('switched');
 
 	}
 
 	static switchHiddenButtons($con){
 		console.log($con);
-        let $h = $($con.find('.'+B.H)), $b  = $($con.find('.'+B.A));
-        console.log($h, $b);
-        $h.addClass(B.A).removeClass(B.H);
-        $b.addClass(B.H).removeClass(B.A);
+		let $h = $($con.find('.'+B.H)), $b  = $($con.find('.'+B.A));
+        	console.log($h, $b);
+        	$h.addClass(B.A).removeClass(B.H);
+        	$b.addClass(B.H).removeClass(B.A);
 	}
 
-    removeClosest(el){
-    	const $el = this.$lk.closest(el);
-        return new Promise((resolve, reject)=> {
+    	removeClosest(el){
+    		const $el = this.$lk.closest(el);
+        	return new Promise((resolve, reject)=> {
 			$el.fadeOut('200', () => {
 				$el.remove();
 				console.log('removed '+el);
 				resolve();
-			});
-			reject();
-        })
-    }
+				});
+				reject();
+        		})
+    	}
 
-    loadBut(){
+    	loadBut(){
 		this.$lk.button('loading');
 		return this;
 	}
@@ -142,19 +144,22 @@ class AP {
 
 
 	static toJq(obj){
-        if (!obj instanceof jQuery) {
-            obj = $(obj);
-        }
-        return obj;
+        	if (!obj instanceof jQuery) {
+            		obj = $(obj);
+        	}
+        	return obj;	
 	}
+	
 	static isJson(jsn){
 		if (jsn === undefined || jsn === null) {
-		     return null;
+			return null;
 		}
-        if (!JSON.parse(jsn)) {
-            return null;
-        }
-        return JSON.parse(jsn);
+        	
+		if (!JSON.parse(jsn)) {
+            		return null;
+        	}	
+        	
+		return JSON.parse(jsn);
 	}
 
 	static _formAction(e) {
@@ -164,7 +169,7 @@ class AP {
 			target,
 			data: target.serializeArray(),
 			action: target.attr('action'),
-            isModal: target.hasClass('modal_form')
+            		isModal: target.hasClass('modal_form')
 		};
 	}
 
@@ -351,12 +356,6 @@ class AP {
 
 	}
 
-
-
-
-    /*get currentClass(){
-    	return this.oldClass;
-    }*/
 
 	/*
 	* TODO:
